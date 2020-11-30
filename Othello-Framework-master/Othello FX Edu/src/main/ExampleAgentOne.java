@@ -42,8 +42,7 @@ public class ExampleAgentOne extends Agent{
 	 */
 	@Override
 	public AgentMove getMove(GameBoardState gameState) {
-		return MinimaxAlgorithm.GetMove(gameState);
-		//return getExampleMove(gameState);
+		return getExampleMove(gameState);
 	}
 	
 	/**
