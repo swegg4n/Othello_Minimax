@@ -8,6 +8,8 @@ import com.eudycontreras.othello.models.GameBoardState;
 import com.eudycontreras.othello.threading.ThreadManager;
 import com.eudycontreras.othello.threading.TimeSpan;
 
+import minimax.MinimaxAlgorithm;
+
 /**
  * <H2>Created by</h2> Eudy Contreras
  * <h4> Mozilla Public License 2.0 </h4>
@@ -40,7 +42,8 @@ public class ExampleAgentOne extends Agent{
 	 */
 	@Override
 	public AgentMove getMove(GameBoardState gameState) {
-		return getExampleMove(gameState);
+		return MinimaxAlgorithm.GetMove(gameState);
+		//return getExampleMove(gameState);
 	}
 	
 	/**
