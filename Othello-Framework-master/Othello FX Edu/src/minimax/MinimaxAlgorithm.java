@@ -6,7 +6,9 @@ import com.eudycontreras.othello.capsules.AgentMove;
 import com.eudycontreras.othello.capsules.MoveWrapper;
 import com.eudycontreras.othello.capsules.ObjectiveWrapper;
 import com.eudycontreras.othello.controllers.AgentController;
+import com.eudycontreras.othello.enumerations.BoardCellState;
 import com.eudycontreras.othello.enumerations.PlayerTurn;
+import com.eudycontreras.othello.models.GameBoardCell;
 import com.eudycontreras.othello.models.GameBoardState;
 
 
@@ -107,9 +109,24 @@ public class MinimaxAlgorithm {
 	{
 		reachedLeafNodes++;
 		
-		return (int)AgentController.getGameEvaluation(gameState, PlayerTurn.PLAYER_ONE);
+		int boardSize = gameState.getGameBoard().getBoardSize();
 		
-		//return gameState.getWhiteCount() - gameState.getBlackCount();
+		int whiteWeightedSum = 0;
+		int blackWeightedSum = 0;
+		
+		GameBoardCell[][] cells = gameState.getGameBoard().getCells();
+		for	(int x = 0; x < boardSize; x++)
+		{
+			for	(int y = 0; y < boardSize; y++)
+			{
+				if (cells[x][y].getCellState() == BoardCellState.WHITE)
+					whiteWeightedSum += (int)(Math.pow(x-boardSize/2,4) + Math.pow(y-boardSize/2,4));
+				else if (cells[x][y].getCellState() == BoardCellState.BLACK)
+					blackWeightedSum += (int)(Math.pow(x-boardSize/2,4) + Math.pow(y-boardSize/2,4));
+			}
+		}
+		
+		return whiteWeightedSum - blackWeightedSum;
 	}
 	
 }
