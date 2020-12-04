@@ -42,7 +42,15 @@ public class ExampleAgentOne extends Agent{
 	 */
 	@Override
 	public AgentMove getMove(GameBoardState gameState) {
-		return getExampleMove(gameState);
+		
+		AgentMove move = MinimaxAlgorithm.GetMove(gameState);
+		
+		this.setNodesExamined(MinimaxAlgorithm.nodesExamined);
+		this.setPrunedCounter(MinimaxAlgorithm.prunedCounter);
+		this.setReachedLeafNodes(MinimaxAlgorithm.reachedLeafNodes);
+		this.setSearchDepth(MinimaxAlgorithm.depth);
+		
+		return move;
 	}
 	
 	/**
@@ -55,11 +63,14 @@ public class ExampleAgentOne extends Agent{
 	 */
 	private AgentMove getExampleMove(GameBoardState gameState){
 		
+		return MinimaxAlgorithm.GetMove(gameState);
+		/*
 		int waitTime = UserSettings.MIN_SEARCH_TIME; // 1.5 seconds
 		
 		ThreadManager.pause(TimeSpan.millis(waitTime)); // Pauses execution for the wait time to cause delay
 		
 		return AgentController.getExampleMove(gameState, playerTurn); // returns an example AI move Note: this is not AB Pruning
+		*/
 	}
 
 }
