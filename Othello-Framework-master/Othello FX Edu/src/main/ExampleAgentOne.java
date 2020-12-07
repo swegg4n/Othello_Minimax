@@ -43,7 +43,7 @@ public class ExampleAgentOne extends Agent{
 	@Override
 	public AgentMove getMove(GameBoardState gameState) {
 		
-		AgentMove move = MinimaxAlgorithm.GetMove(gameState);
+		AgentMove move = MinimaxAlgorithm.GetMove(gameState, playerTurn);
 		
 		this.setNodesExamined(MinimaxAlgorithm.nodesExamined);
 		this.setPrunedCounter(MinimaxAlgorithm.prunedCounter);
@@ -63,7 +63,7 @@ public class ExampleAgentOne extends Agent{
 	 */
 	private AgentMove getExampleMove(GameBoardState gameState){
 		
-		return MinimaxAlgorithm.GetMove(gameState);
+		return null;
 		/*
 		int waitTime = UserSettings.MIN_SEARCH_TIME; // 1.5 seconds
 		
